@@ -8,10 +8,11 @@ fi
 
 actual_dir=$(pwd)
 
-if [ ! -e "${actual_dir}/.env" ]; then
-  touch ${actual_dir}/.env
-  echo "PROXY_PATH=${actual_dir}" >> ${actual_dir}/.env
-  chmod 600 ${actual_dir}/.env
+if [ -e "${actual_dir}/.env" ]; then
+  rm -f ${actual_dir}/.env
 fi
+
+echo "PROXY_PATH=${actual_dir}" >> ${actual_dir}/.env
+chmod 600 ${actual_dir}/.env
 
 docker-compose up -d
