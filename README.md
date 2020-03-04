@@ -9,30 +9,18 @@ Simple and lightweight docker-compose setup for automated nginx reverse proxy wi
 - Docker-Compose: 1.10.0+
 
 ### Usage
-
 1. Clone repository
 ```bash
 git clone https://github.com/patrick-birkle/nginx-reverse-proxy.git
 ```
 
-2. Copy `.env_template` and name it `.env`
-```bash
-cp .env_template .env
-``` 
-
-3. Paste your reverse-proxy docker-compose working directory after the `PROXY_PATH` variable in the `.env` file
-```bash
-# Example
-PROXY_PATH=/data/reverse-proxy
-``` 
-
-4. Make `start.sh` executable and execute it
+2. Make `start.sh` executable and execute it
 ```bash
 chmod 764 start.sh
 ./start.sh
 ``` 
 
-5. Use environment variables `VIRTUAL_HOST`, `LETSENCRYPT_HOST`, `LETSENCRYPT_EMAIL` in your docker containers you want to redirect by the reverse proxy. ``
+3. Use environment variables `VIRTUAL_HOST`, `LETSENCRYPT_HOST`, `LETSENCRYPT_EMAIL` in your docker containers you want to redirect by the reverse proxy.
 ```
 ...
     environment:
