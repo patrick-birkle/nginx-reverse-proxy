@@ -9,11 +9,11 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ${PROXY_PATH}/data/conf:/etc/nginx/conf.d
-      - ${PROXY_PATH}/data/vhost:/etc/nginx/vhost.d
-      - ${PROXY_PATH}/data/html:/usr/share/nginx/html
-      - ${PROXY_PATH}/data/dhparam:/etc/nginx/dhparam
-      - ${PROXY_PATH}/data/certs:/etc/nginx/certs:ro
+      - ./data/conf:/etc/nginx/conf.d
+      - ./data/vhost:/etc/nginx/vhost.d
+      - ./data/html:/usr/share/nginx/html
+      - ./data/dhparam:/etc/nginx/dhparam
+      - ./data/certs:/etc/nginx/certs:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
     restart: always
 
@@ -25,7 +25,7 @@ services:
     volumes_from:
       - reverse-proxy
     volumes:
-      - ${PROXY_PATH}/data/certs:/etc/nginx/certs
+      - ./data/certs:/etc/nginx/certs
       - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: always
 
